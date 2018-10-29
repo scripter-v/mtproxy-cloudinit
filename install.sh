@@ -1,9 +1,12 @@
 #!/usr/bin/env sh
 
 export DEBIAN_FRONTEND=noninteractive
+export UCF_FORCE_CONFFNEW=1
 
 sudo apt-get -y remove docker docker-engine docker.io
-sudo apt-get -y update && sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" dist-upgrade
+sudo apt-get -y update
+sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" dist-upgrade
+
 sudo apt-get -y install \
     apt-transport-https \
     ca-certificates \
