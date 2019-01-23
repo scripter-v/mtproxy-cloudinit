@@ -2,6 +2,9 @@
 
 export DEBIAN_FRONTEND=noninteractive
 export UCF_FORCE_CONFFNEW=1
+socks5_user=
+socks5_passwd=
+mt_proxy_secret=
 
 apt-get -y remove docker docker-engine docker.io
 apt-get -y update
@@ -22,7 +25,6 @@ apt-get update
 apt-get -y install docker-ce docker-compose
 
 ufw allow OpenSSH
-ufw allow https
 ufw --force enable
 
 wget -O /usr/local/bin/ufw-docker \
@@ -30,7 +32,8 @@ wget -O /usr/local/bin/ufw-docker \
 chmod +x /usr/local/bin/ufw-docker
 ufw-docker install
 
-git clone https://github.com/scripter-v/mtproxy.git /root/work/mtproxy
-git clone https://github.com/scripter-v/tinysocks5.git /root/work/tinysocks5
-cd /root/work/tinysocks5/ && docker-compose up -d
+docker run --name socks5 --restart=unless-stopped -p 2081:1080 -e"PROXY_USER=$socks5_user" -e"PROXY_PASSWORD=$socks5_passwd" -d serjs/go-socks5-proxy:latest
+docker run --name mtg    --restart=unless-stopped -p 3128:3128 -d nineseconds/mtg:stable $mt_proxy_secret
+
 ufw-docker allow socks5 1080/tcp
+ufw-docker allow mtg 3128/tcp
