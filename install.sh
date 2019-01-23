@@ -33,7 +33,7 @@ chmod +x /usr/local/bin/ufw-docker
 ufw-docker install
 
 docker run --name socks5 --restart=unless-stopped -p 2081:1080 -e"PROXY_USER=$socks5_user" -e"PROXY_PASSWORD=$socks5_passwd" -d serjs/go-socks5-proxy:latest
-docker run --name mtg    --restart=unless-stopped -p 3128:3128 -d nineseconds/mtg:stable $mt_proxy_secret
+docker run --name mtg    --restart=unless-stopped -p 443:3128 -d nineseconds/mtg:stable $mt_proxy_secret
 
 ufw-docker allow socks5 1080/tcp
 ufw-docker allow mtg 3128/tcp
