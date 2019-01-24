@@ -1,4 +1,4 @@
-# Скрипт наливки машины с mt-proxy и socks5 proxy для DO
+# Скрипт наливки машины в DO с проксями
 В Digital Ocean есть возможность для новых дроплетов указать [пользовательский скрипт Cloud-Init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-script).
 Для этого при создании дроплета нужно в секции **"Select additional options"** установить флаг **"User data"** и
 вставить в поле ввода содержимое файла [install.sh](https://raw.githubusercontent.com/scripter-v/mtproxy-cloudinit/master/install.sh) и не забыть задать секреты:
