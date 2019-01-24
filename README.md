@@ -11,7 +11,7 @@ mt_proxy_secret=
 
 ## О mt-proxy, секретах и блокировках
 * https://telegra.ph/telegram-blocks-wtf-05-26
-* https://github.com/serjs/socks5-server
+* https://github.com/9seconds/mtg#secure-mode
 
 
 ## Конфигурация
